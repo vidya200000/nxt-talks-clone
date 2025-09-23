@@ -13,15 +13,29 @@ A clone of the NXT Talks web app built using HTML, CSS, and JavaScript. This pro
 - Smooth scrolling between sections  
 
 ---
-
 ## Screenshots
 
-![Home Page](assets/home.png)  
-![About Section](assets/about.png)  
-![Services Section](assets/services.png)  
-![Portfolio Section](assets/portfolio.png)  
+### Home Page
+![Home Page](assets/home.jpg.png)
 
-*(Replace these images with your actual screenshots stored in the `assets` folder.)*
+### Companies Section
+![Companies Section](assets/companies.jpg.png)
+
+### Videos Section
+![Videos Section](assets/vedios.jpg.png)
+
+### Claim Section
+![Claim Section](assets/claim.jpg.png)
+
+### Feedback Section
+![Feedback Section](assets/feedback.jpg.png)
+
+### Dreams Section
+![Dreams Section](assets/dream.jpg.png)
+
+### Contact Section
+![Contact Section](assets/contact.jpg.png)
+
 
 ---
 
