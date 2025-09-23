@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nxt Talks — Clone</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    /* Top-left logo styling */
+    .top-left-logo {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 9999;
+    }
+    .top-left-logo img {
+      width: 140px;   /* adjust size */
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Left Logo -->
+  <div class="top-left-logo">
+    <img src="assets/nxtwave-logo.svg" alt="NxtWave Logo" />
+  </div>
+
+<!-- ✅ Hero Section -->  
+<section class="hero">
+  <!-- Dark Overlay for better text visibility -->
+  <div class="overlay">
+
+    <!-- Speakers Info (scrolling text up to down) -->
+    <div class="speakers-info">
+      <div class="speakers-info-inner">
+        <p><span>A Manager at</span><br>Teaches You About Programming</p>
+        <p><span>A CEO at</span><br>Teaches You About Entrepreneurship</p>
+        <p><span>A Sr. Manager at</span><br>Teaches You About Product Management</p>
+        <p><span>A CTO at</span><br>Teaches You About Leadership</p>
+        <p><span>A Lead at</span><br>Teaches You About Career Designing</p>
+
+        <!-- duplicated for smooth infinite scroll -->
+        <p><span>A Manager at</span><br>Teaches You About Programming</p>
+        <p><span>A CEO at</span><br>Teaches You About Entrepreneurship</p>
+        <p><span>A Sr. Manager at</span><br>Teaches You About Product Management</p>
+        <p><span>A CTO at</span><br>Teaches You About Leadership</p>
+        <p><span>A Lead at</span><br>Teaches You About Career Designing</p>
+      </div>
+    </div>
+
+    <script>
+      const messages = [
+        "A Sr. Recruiter at<br>Teaches You About<br>Acing Interviews",
+        "A Manager at<br>Teaches You About<br>Programming",
+        "A CEO at<br>Teaches You About<br>Entrepreneurship",
+        "A Sr. Manager at<br>Teaches You About<br>Product Management",
+        "A CTO at<br>Teaches You About<br>Leadership",
+        "A Lead at<br>Teaches You About<br>Career Designing"
+      ];
+    </script>
+
+    <div class="hero-content">
+      <div class="buttons">
+        <a href="#claim-access" class="claim-btn">Claim Free Access</a>
+        <button id="watchTrailerBtn">Watch Trailer</button>
+      </div>
+      <p class="free-note">Get 1 Podcast worth ₹2000 Free</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal for Watch Trailer -->
+<div id="trailerModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <iframe id="trailerVideo" width="800" height="450" 
+      src="https://www.youtube.com/embed/cBt9a7afBtk" 
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<!-- CSS for Modal (add to style.css) -->
+<style>
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.7); 
+}
+
+.modal-content {
+  position: relative;
+  margin: 5% auto;
+  padding: 0;
+  width: 90%;
+  max-width: 900px;
+}
+
+.modal iframe {
+  width: 100%;
+  height: 50vw; /* responsive height relative to screen width */
+  max-height: 500px; /* prevent too tall on desktop */
+  border: none;
+  border-radius: 10px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .modal iframe {
+    height: 40vw;
+  }
+  .modal .close {
+    font-size: 24px;
+    top: 5px;
+    right: 15px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .modal iframe {
+    height: 60vw;
+  }
+  .modal .close {
+    font-size: 20px;
+    top: 5px;
+    right: 10px;
+  }
+}
+</style>
+
+<!-- JS for Modal (paste before </body>) -->
+<script>
+const trailerBtn = document.getElementById("watchTrailerBtn");
+const modal = document.getElementById("trailerModal");
+const closeBtn = modal.querySelector(".close");
+
+trailerBtn.onclick = function() {
+  modal.style.display = "block";
+}
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+  const iframe = document.getElementById("trailerVideo");
+  iframe.src = iframe.src; // stop video
+}
+
+// Close modal if clicking outside the video
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    const iframe = document.getElementById("trailerVideo");
+    iframe.src = iframe.src;
+  }
+}
+</script>
+<!-- ✅ End of Hero Section -->
+
+  <!-- Companies Section -->
+  <section class="companies">
+    <h2>Our Speakers Come From Your Dream Companies</h2> <br> <br> <br>
+    <div class="logo-slider">
+      <div class="logos">
+        <img src="assets/google.png" alt="Google" /><br><br>
+        <img src="assets/microsoft.png" alt="Microsoft" /> <br> <br>
+        <img src="assets/amazon.png" alt="Amazon" /> <br> <br>
+        <img src="assets/meta.png" alt="Meta" /> <br> <br>
+        <img src="assets/infosys.png" alt="Infosys" /> <br> <br>
+        <img src="assets/wipro.png" alt="Wipro" /> <br> <br>
+        <img src="assets/tcs.png" alt="TCS" /> <br> <br>
+        <img src="assets/meesho.png" alt="Meesho" /> <br> <br>
+        <img src="assets/uber.png" alt="Uber" /> <br> <br>
+        <img src="assets/oracle.png" alt="Oracle" /> <br> <br>
+        <img src="assets/ibm.png" alt="IBM" /> <br> <br>
+        <img src="assets/slice.png" alt="Slice" /> <br> <br>
+        <img src="assets/rapido.png" alt="Rapido" /> <br> <br>
+        <img src="assets/genpact.png" alt="Genpact" /> <br> <br>
+        <img src="assets/mcafee.png" alt="McAfee" /> <br> <br>
+        <img src="assets/super.png" alt="Super" /> <br> <br>
+        <img src="assets/factset.png" alt="Factset" /> <br> <br>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW CONTENT SECTION: Insider (inserted right after Companies) -->
+  <section class="insider">
+    <h2>A Rare Collection of Insider <br> Knowledge, All Yours!</h2>
+    <p class="subtitle">
+      All secrets uncovered. Exclusive insights, Timely Advice and Personal Growth <br> Journeys straight from the tech experts.
+    </p>
+    <div class="categories">
+  <span class="active" data-category="trending">🔥 Trending</span>
+  <span data-category="all">All</span>
+  <span data-category="tech">Tech</span>
+  <span data-category="career">Career</span>
+  <span data-category="cxo">CXO</span>
+  <span data-category="productivity">Productivity</span>
+  <span data-category="gsoc">GSOC</span>
+  <span data-category="panel">Panel</span>
+</div>
+
+<div class="videos">
+  <!-- Tech -->
+<div class="video-card tech trending">
+  <iframe src="https://www.youtube.com/embed/mM0Ikzf2GYU" allowfullscreen></iframe>
+</div>
+<div class="video-card tech">
+  <iframe src="https://www.youtube.com/embed/cBt9a7afBtk" allowfullscreen></iframe>
+</div>
+<div class="video-card tech">
+  <iframe src="https://www.youtube.com/embed/tmwiN4bogQM" allowfullscreen></iframe>
+</div>
+
+
+  <!-- Career -->
+  <div class="video-card career trending">
+    <iframe src="https://www.youtube.com/embed/BodvU34anQo" allowfullscreen></iframe>
+  </div>
+  <div class="video-card career">
+    <iframe src="https://www.youtube.com/embed/i3JVehTnvq0" allowfullscreen></iframe>
+  </div>
+  <div class="video-card career">
+    <iframe src="https://www.youtube.com/embed/JoqyPojlnOQ" allowfullscreen></iframe>
+  </div>
+
+  <!-- CXO -->
+<div class="video-card cxo trending">
+  <iframe src="https://www.youtube.com/embed/jFQIGgfWo5g" allowfullscreen></iframe>
+</div>
+<div class="video-card cxo">
+  <iframe src="https://www.youtube.com/embed/0818am3NaXY" allowfullscreen></iframe>
+</div>
+<div class="video-card cxo">
+  <iframe src="https://www.youtube.com/embed/3JLhQCJww5U" allowfullscreen></iframe>
+</div>
+
+
+
+  <!-- Productivity -->
+<div class="video-card productivity trending">
+  <iframe src="https://www.youtube.com/embed/t4U9Nby_CxA" allowfullscreen></iframe>
+</div>
+<div class="video-card productivity">
+  <iframe src="https://www.youtube.com/embed/rklsDoBmv5w" allowfullscreen></iframe>
+</div>
+<div class="video-card productivity">
+  <iframe src="https://www.youtube.com/embed/Iml_GAqQ_og" allowfullscreen></iframe>
+</div>
+
+
+  <!-- GSOC -->
+<div class="video-card gsoc trending">
+  <iframe src="https://www.youtube.com/embed/JoqyPojlnOQ" allowfullscreen></iframe>
+</div>
+<div class="video-card gsoc">
+  <iframe src="https://www.youtube.com/embed/xFZD0Z_vjes" allowfullscreen></iframe>
+</div>
+<div class="video-card gsoc">
+  <iframe src="https://www.youtube.com/embed/5JYJlQpni6o" allowfullscreen></iframe>
+</div>
+
+
+  <!-- Panel -->
+  <div class="video-card panel trending">
+    <iframe src="https://www.youtube.com/embed/5mnu1_GTVlI" allowfullscreen></iframe>
+  </div>
+  <div class="video-card panel">
+    <iframe src="https://www.youtube.com/embed/6rWipN9C8AU" allowfullscreen></iframe>
+  </div>
+  <div class="video-card panel">
+    <iframe src="https://www.youtube.com/embed/vbGyene9e-4" allowfullscreen></iframe>
+  </div>
+</div>
+
+  <!-- Claim Free Access Button -->
+  <a href="#claim-access" class="claim-btn">Claim Free Access <br> Get 1 Podcast worth ₹2000 Free</a>
+
+</section>
+  <!-- END NEW CONTENT -->
+
+
+<!-- Students Feedback Section -->
+<section class="students-feedback">
+  <h2>Students Say,<br>It’s a Blockbuster! 🎉</h2>
+  <p>25000+ Happy Feedbacks</p>
+
+  <div class="feedback-cards">
+
+    <!-- Card 1 -->
+    <div class="feedback-card">
+      <img src="assets/student1.jpg" alt="Ananya Sharma">
+      <h4>Ananya Sharma</h4>
+      <p class="role">Software Engineer at Infosys</p>
+      <p>"This podcast changed the way I prepare for interviews. Loved it!"</p>
+      <a href="https://www.linkedin.com/in/ananya-sharma-demo" target="_blank" class="linkedin-link">
+        <img src="assets/linkedin.png" alt="LinkedIn"> View Profile
+      </a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="feedback-card">
+      <img src="assets/student2.jpg" alt="Rahul Verma">
+      <h4>Rahul Verma</h4>
+      <p class="role">Data Analyst at TCS</p>
+      <p>"Clear explanations and real insights. Totally worth my time."</p>
+      <a href="https://www.linkedin.com/in/rahul-verma-demo" target="_blank" class="linkedin-link">
+        <img src="assets/linkedin.png" alt="LinkedIn"> View Profile
+      </a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="feedback-card">
+      <img src="assets/student3.jpg" alt="Priya Singh">
+      <h4>Priya Singh</h4>
+      <p class="role">Student at NIT</p>
+      <p>"Very engaging and practical tips. Highly recommend to all students!"</p>
+      <a href="https://www.linkedin.com/in/priya-singh-demo" target="_blank" class="linkedin-link">
+        <img src="assets/linkedin.png" alt="LinkedIn"> View Profile
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Empowering Podcast Series Section -->
+<section class="podcast-series">
+  <div class="img">
+  <h2>NxtWave's Empowering Podcast Series <br> to Shape your Dream Career</h2>
+  <p class="highlight">100+ Podcasts</p>
+  <p>Each worth <strong>₹2000/-</strong></p>
+  <p class="free">FREE for NxtWave Academy students</p>
+  
+  <a href="#claim-access" class="claim-btn">🎧 Claim Free Access</a>
+  
+</div>
+</section>
+
+
+  <!-- Claim Form Section -->
+<section id="claim-access" class="claim">
+  <h2>Claim Your Free Access to a Podcast</h2>
+  <form class="claim-form">
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <div class="phone-input">
+        <span>India (भारत) +91</span>
+        <input type="tel" id="phone" placeholder="Enter 10 Digit Mobile Number" maxlength="10" required />
+      </div>
+    </div>
+    <button type="submit" class="btn">Get OTP</button>
+  </form>
+</section>
+
+
+  <script src="script.js"></script>
+  <script>
+  (function () {
+    const categoryButtons = document.querySelectorAll(".insider .categories span");
+    const videos = document.querySelectorAll(".insider .video-card");
+
+    function showCategory(category) {
+      videos.forEach(v => {
+        if (category === "all") {
+          v.style.display = "block";
+        } else {
+          v.style.display = v.classList.contains(category) ? "block" : "none";
+        }
+      });
+    }
+
+    // default -> show trending
+    showCategory("trending");
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        categoryButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const cat = btn.getAttribute("data-category");
+        showCategory(cat);
+      });
+    });
+  })();
+</script>
+
+
+  <!-- Inline: category filter (added without changing your other files) -->
+  <script>
+    (function () {
+      const categoryButtons = document.querySelectorAll(".insider .categories span");
+      const videos = document.querySelectorAll(".insider .video-card");
+
+      function showCategory(category) {
+        videos.forEach(v => {
+          if (category === "all") {
+            v.style.display = "block";
+          } else {
+            v.style.display = v.classList.contains(category) ? "block" : "none";
+          }
+        });
+      }
+
+      // default -> show all
+      showCategory("all");
+
+      categoryButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          categoryButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          const cat = btn.getAttribute("data-category");
+          showCategory(cat);
+        });
+      });
+    })();
+  </script>
+   <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <!-- Left Side -->
+      <div class="footer-left">
+        <img src="assets/nxtwave-logo.png" alt="NxtWave Logo" class="footer-logo">
+        <h4>Reach Us</h4>
+        <p>
+          <img src="assets/email-icon.png" alt="Email" class="icon"> 
+          support@nxtwave.tech
+        </p>
+        <div class="social-icons">
+          <a href="#"><img src="assets/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="assets/twitter.png" alt="Twitter"></a>
+          <a href="#"><img src="assets/linkedin.png" alt="LinkedIn"></a>
+          <a href="#"><img src="assets/youtube.png" alt="YouTube"></a>
+        </div>
+      </div>
+
+      <!-- Middle -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Academy</a></li>
+          <li><a href="#">Intensive</a></li>
+          <li><a href="#">Hire with us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Reviews</a></li>
+        </ul>
+      </div>
+
+      <!-- Right Side -->
+      <div class="footer-right">
+        <h4>Payment Methods</h4>
+        <div class="payment-methods">
+          <img src="assets/visa.png" alt="Visa">
+          <img src="assets/mastercard.png" alt="Mastercard">
+          <img src="assets/maestro.png" alt="Maestro">
+          <img src="assets/razorpay.png" alt="Razorpay">
+          <img src="assets/upi.png" alt="UPI">
+          <img src="assets/rupay.png" alt="RuPay">
+        </div>
+        <p>
+          <img src="assets/location-icon.png" alt="Location" class="icon"> 
+          NxtWave, WeWork Rajapushpa Summit, Nanakramguda Rd, Financial District, Manikonda Jagir, Telangana 500032
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Links -->
+    <div class="footer-bottom">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Terms and Conditions</a>
+      <a href="#">Grievance Redressal</a>
+      <a href="#">Corporate Information</a>
+    </div>
+  </footer>
+
+
+</body>
+</html>
